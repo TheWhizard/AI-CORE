@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ai-core", "ai-core\ai-core.vcproj", "{021580F3-F9A0-4225-9FC5-D402F8282384}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{021580F3-F9A0-4225-9FC5-D402F8282384}.Debug|Win32.ActiveCfg = Debug|Win32
+		{021580F3-F9A0-4225-9FC5-D402F8282384}.Debug|Win32.Build.0 = Debug|Win32
+		{021580F3-F9A0-4225-9FC5-D402F8282384}.Release|Win32.ActiveCfg = Release|Win32
+		{021580F3-F9A0-4225-9FC5-D402F8282384}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
