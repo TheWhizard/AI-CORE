@@ -1,28 +1,32 @@
 #include <iostream>
 #include <math.h>
 
+#include "Vector3d.h"
 #include "StateMachine.h"
+#include "BaseGameEntity.h"
 
 using namespace std;
 
 // Name of AiManager Class
-class AiManager
+class AiManager : public BaseGameEntity
 {
-	// Declare Public Methods
-public:
-	AiManager(int id)
-	{
-		SetID(id);
-	}
-	virtual ~AiManager(){};
-
-	int	ID()const{return m_ID;}
 	
 	// Declare Private Methods
 private:
-	int	m_ID;
-	static int m_iNextValidID;
-	void SetID(int val);
+	State<AiManager>*	m_pCurrentState;
+	State<AiManager>*	m_pPreviousState;
+	State<AiManager>*	m_pGlobalState;
+	StateMachine<AiManager>*	m_pStateMachine;
+
+	// Declare Public Methods
+public:
+	void ChangeState(State<AiManager>* pNewState);
+	void RevertToPreviousState();
+	AiManager(int id):BaseGameEntity(id)
+	{
+		m_pStateMachine = new StateMachine<AiManager>(this);
+	}
+
 };
 
 
@@ -96,10 +100,5 @@ private:
 
 };
 
-
-int main () 
-{
-	return 0;
-}
 
 

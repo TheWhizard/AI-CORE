@@ -165,6 +165,14 @@
 				RelativePath=".\ai-core.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\ai-test.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\BaseGameEntity.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -172,11 +180,19 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\BaseGameEntity.h"
+				>
+			</File>
+			<File
 				RelativePath=".\State.h"
 				>
 			</File>
 			<File
 				RelativePath=".\StateMachine.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Vector3D.h"
 				>
 			</File>
 		</Filter>
