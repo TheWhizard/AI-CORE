@@ -1,4 +1,11 @@
+#ifndef _STATES_H_
+#define _STATES_H_
+
+#include "State.h"
 #include "ai-core.h"
+
+class AiManager;
+
 
 // Name of AiChase Class
 class AiChase : public State<AiManager>
@@ -18,21 +25,6 @@ public:
 	virtual void Exit(AiManager* aimanager);
 };
 
-void AiChase::Enter(AiManger* aimanager)
-{
-// Write Code Here
-}
-
-void AiChase::Execute(AiManger* aimanager)
-{
-// Write Code Here
-}
-
-void AiChase::Exit(AiManger* aimanager)
-{
-// Write Code Here
-}
-
 // Name of AiExplore Class
 class AiExplore : public State<AiManager>
 {
@@ -51,20 +43,7 @@ public:
 	virtual void Exit(AiManager* aimanager);
 };
 
-void AiExplore::Enter(AiManger* aimanager)
-{
-// Write Code Here
-}
 
-void AiExplore::Execute(AiManger* aimanager)
-{
-// Write Code Here
-}
-
-void AiExplore::Exit(AiManger* aimanager)
-{
-// Write Code Here
-}
 
 // Name of AiFollowPath Class
 class AiFollowPath : public State<AiManager>
@@ -83,21 +62,6 @@ public:
 	virtual void Execute(AiManager* aimanager);
 	virtual void Exit(AiManager* aimanager);
 };
-
-void AiFollowPath::Enter(AiManger* aimanager)
-{
-// Write Code Here
-}
-
-void AiFollowPath::Execute(AiManger* aimanager)
-{
-// Write Code Here
-}
-
-void AiFollowPath::Exit(AiManger* aimanager)
-{
-// Write Code Here
-}
 
 
 // Name of AiAvoid Class
@@ -118,20 +82,6 @@ public:
 	virtual void Exit(AiManager* aimanager);
 };
 
-void AiAvoid::Enter(AiManger* aimanager)
-{
-// Write Code Here
-}
-
-void AiAvoid::Execute(AiManger* aimanager)
-{
-// Write Code Here
-}
-
-void AiAvoid::Exit(AiManger* aimanager)
-{
-// Write Code Here
-}
 
 // Name of AiEvade Class
 class AiEvade : public State<AiManager>
@@ -151,17 +101,5 @@ public:
 	virtual void Exit(AiManager* aimanager);
 };
 
-void AiEvade::Enter(AiManger* aimanager)
-{
-// Write Code Here
-}
 
-void AiEvade::Execute(AiManger* aimanager)
-{
-// Write Code Here
-}
-
-void AiEvade::Exit(AiManger* aimanager)
-{
-// Write Code Here
-}
+#endif

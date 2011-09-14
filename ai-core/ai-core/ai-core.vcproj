@@ -166,6 +166,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ai-states.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ai-test.cpp"
 				>
 			</File>
