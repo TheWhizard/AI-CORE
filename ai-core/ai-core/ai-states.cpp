@@ -16,18 +16,18 @@ void AiChase::Enter(AiManager* aimanager)
 
 {
 	// put code here
-	cout << "AiChase::Enter";
+	cout << "AiChase::Enter()\n";
 }
 void AiChase::Execute(AiManager* aimanager)
 {
 	// put code here
-		cout << "AiChase::Execute";
+		cout << "AiChase::Execute()\n";
 
 }
 void AiChase::Exit(AiManager* aimanager)
 {
 	// put code here
-	cout << "AiChase::Exit";
+	cout << "AiChase::Exit()\n";
 }
 
 
@@ -42,18 +42,18 @@ void AiExplore::Enter(AiManager* aimanager)
 
 {
 	// put code here
-	cout << "AiExplore::Enter\n";
+	cout << "AiExplore::Enter()\n";
 }
 void AiExplore::Execute(AiManager* aimanager)
 {
 	// put code here
-		cout << "AiExplore::Execute\n";
+		cout << "AiExplore::Execute()\n";
 
 }
 void AiExplore::Exit(AiManager* aimanager)
 {
 	// put code here
-	cout << "AiExplore::Exit\n";
+	cout << "AiExplore::Exit()\n";
 }
 
 
@@ -68,18 +68,18 @@ void AiEvade::Enter(AiManager* aimanager)
 
 {
 	// put code here
-	cout << "AiEvade::Enter";
+	cout << "AiEvade::Enter()\n";
 }
 void AiEvade::Execute(AiManager* aimanager)
 {
 	// put code here
-		cout << "AiEvade::Execute";
+		cout << "AiEvade::Execute()\n";
 
 }
 void AiEvade::Exit(AiManager* aimanager)
 {
 	// put code here
-	cout << "AiEvade::Exit";
+	cout << "AiEvade::Exit()\n";
 }
 
 
@@ -94,18 +94,18 @@ void AiAvoid::Enter(AiManager* aimanager)
 
 {
 	// put code here
-	cout << "AiAvoid::Enter";
+	cout << "AiAvoid::Enter()\n";
 }
 void AiAvoid::Execute(AiManager* aimanager)
 {
 	// put code here
-		cout << "AiAvoid::Execute";
+		cout << "AiAvoid::Execute()\n";
 
 }
 void AiAvoid::Exit(AiManager* aimanager)
 {
 	// put code here
-	cout << "AiAvoid::Exit";
+	cout << "AiAvoid::Exit()\n";
 }
 
 
@@ -120,16 +120,16 @@ void AiFollowPath::Enter(AiManager* aimanager)
 
 {
 	// put code here
-	cout << "AiFollowPath::Enter";
+	cout << "AiFollowPath::Enter()\n";
 }
 void AiFollowPath::Execute(AiManager* aimanager)
 {
 	// put code here
-		cout << "AiFollowPath::Execute";
+		cout << "AiFollowPath::Execute()\n";
 
 }
 void AiFollowPath::Exit(AiManager* aimanager)
 {
 	// put code here
-	cout << "AiFollowPath::Exit";
+	cout << "AiFollowPath::Exit()\n";
 }

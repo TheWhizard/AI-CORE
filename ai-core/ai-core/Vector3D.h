@@ -1,3 +1,20 @@
+/*Template source: Programming Game AI by Example, pp.64-65
+    Author: Mat Buckland
+    Publisher: Jones & Bartlett Learning; 1 edition (September 30, 2004)
+    ISBN-10: 1556220782
+    ISBN-13: 978-1556220784
+*/
+
+//------------------------------------------------------------------------
+//
+//  Name:   Vector3D.h
+//
+//  Desc:   Derivative work from Buckland's Vector2D.h
+//
+//  Author: (originally)Mat Buckland 2002 (fup@ai-junkie.com)
+//
+//------------------------------------------------------------------------
+
 #ifndef S3VECTOR_H
 #define S3VECTOR_H
 

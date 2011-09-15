@@ -22,6 +22,7 @@ private:
 	StateMachine<AiManager>*	m_pStateMachine;
 
 	Vector3D					location;
+	Vector3D					facing;
 	
 	// Declare Public Methods
 public:
