@@ -192,5 +192,53 @@ inline Vector3D operator/(const Vector3D &lhs, double val)
   return result;
 }
 
+//non-member functions
+inline Vector3D Vec3DNormalize(const Vector3D &v)
+{
+  Vector3D vec = v;
+
+  double vector_length = vec.Length();
+
+  if (vector_length > std::numeric_limits<double>::epsilon())
+  {
+    vec.x /= vector_length;
+    vec.y /= vector_length;
+	vec.z /= vector_length;
+  }
+
+  return vec;
+}
+
+
+inline double Vec3DDistance(const Vector3D &v1, const Vector3D &v2)
+{
+
+  double ySeparation = v2.y - v1.y;
+  double xSeparation = v2.x - v1.x;
+  double zSeparation = v2.z - v1.z;
+
+  return sqrt(ySeparation*ySeparation + xSeparation*xSeparation + zSeparation*zSeparation);
+}
+
+inline double Vec3DDistanceSq(const Vector3D &v1, const Vector3D &v2)
+{
+
+  double ySeparation = v2.y - v1.y;
+  double xSeparation = v2.x - v1.x;
+  double zSeparation = v2.z - v1.z;
+
+  return ySeparation*ySeparation + xSeparation*xSeparation + zSeparation*zSeparation;
+}
+
+inline double Vec3DLength(const Vector3D& v)
+{
+  return sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
+}
+
+inline double Vec3DLengthSq(const Vector3D& v)
+{
+  return (v.x*v.x + v.y*v.y + v.z*v.z);
+}
+
 
 #endif
