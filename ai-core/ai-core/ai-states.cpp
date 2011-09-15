@@ -42,18 +42,18 @@ void AiExplore::Enter(AiManager* aimanager)
 
 {
 	// put code here
-	cout << "AiExplore::Enter";
+	cout << "AiExplore::Enter\n";
 }
 void AiExplore::Execute(AiManager* aimanager)
 {
 	// put code here
-		cout << "AiExplore::Execute";
+		cout << "AiExplore::Execute\n";
 
 }
 void AiExplore::Exit(AiManager* aimanager)
 {
 	// put code here
-	cout << "AiExplore::Exit";
+	cout << "AiExplore::Exit\n";
 }
 
 

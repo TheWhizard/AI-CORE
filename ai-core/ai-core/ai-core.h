@@ -28,9 +28,8 @@ public:
 	void ChangeState(State<AiManager>* pNewState);
 	void RevertToPreviousState();
 	AiManager(int id);
-
-	
-
+	void Update();
+	StateMachine<AiManager>*  GetFSM()const{return m_pStateMachine;}
 	
 	~AiManager(){delete m_pStateMachine;}
 
