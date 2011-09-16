@@ -14,5 +14,4 @@ void AiManager::Update()
 {
 	cout << "AiManager::Update()\n";
 	m_pStateMachine->Update();
-	
 }

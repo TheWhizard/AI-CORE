@@ -22,6 +22,7 @@ void AiChase::Execute(AiManager* aimanager)
 {
 	// put code here
 		cout << "AiChase::Execute()\n";
+		aimanager->GetFSM()->ChangeState(AiEvade::Instance());
 
 }
 void AiChase::Exit(AiManager* aimanager)
@@ -48,6 +49,7 @@ void AiExplore::Execute(AiManager* aimanager)
 {
 	// put code here
 		cout << "AiExplore::Execute()\n";
+		aimanager->GetFSM()->ChangeState(AiChase::Instance());
 
 }
 void AiExplore::Exit(AiManager* aimanager)
@@ -74,6 +76,7 @@ void AiEvade::Execute(AiManager* aimanager)
 {
 	// put code here
 		cout << "AiEvade::Execute()\n";
+		aimanager->GetFSM()->ChangeState(AiAvoid::Instance());
 
 }
 void AiEvade::Exit(AiManager* aimanager)
@@ -100,7 +103,7 @@ void AiAvoid::Execute(AiManager* aimanager)
 {
 	// put code here
 		cout << "AiAvoid::Execute()\n";
-
+		aimanager->GetFSM()->ChangeState(AiFollowPath::Instance());
 }
 void AiAvoid::Exit(AiManager* aimanager)
 {
@@ -126,6 +129,7 @@ void AiFollowPath::Execute(AiManager* aimanager)
 {
 	// put code here
 		cout << "AiFollowPath::Execute()\n";
+		aimanager->GetFSM()->ChangeState(AiExplore::Instance());
 
 }
 void AiFollowPath::Exit(AiManager* aimanager)
