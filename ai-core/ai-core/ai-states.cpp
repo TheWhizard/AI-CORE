@@ -25,7 +25,7 @@ void AiChase::Execute(AiManager* aimanager)
 	bool x =false, z = false;
 	Vector3D chaseVel;
 
-	while(aimanager->GetLocation() != aimanager->GetPlayerPos() && aimanager->GetVisible() == true)
+	if(aimanager->GetLocation() != aimanager->GetPlayerPos() && aimanager->GetVisible() == true)
 	{
 		if(aimanager->GetPlayerPos().x != aimanager->GetLocation().x)
 		{
@@ -38,7 +38,7 @@ void AiChase::Execute(AiManager* aimanager)
 			aimanager->SetVelocity(chaseVel);
 		}
 	}
-
+	else
 	aimanager->GetFSM()->ChangeState(aimanager->GetPrevious());
 	//aimanager->GetFSM()->ChangeState(AiEvade::Instance());
 
