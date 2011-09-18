@@ -21,8 +21,26 @@ void AiChase::Enter(AiManager* aimanager)
 void AiChase::Execute(AiManager* aimanager)
 {
 	// put code here
-		cout << "AiChase::Execute()\n";
-		aimanager->GetFSM()->ChangeState(AiEvade::Instance());
+	cout << "AiChase::Execute()\n";
+	bool x =false, z = false;
+	Vector3D chaseVel;
+
+	if(aimanager->GetLocation() != aimanager->GetPlayerPos() && aimanager->GetVisible() == true)
+	{
+		if(aimanager->GetPlayerPos().x != aimanager->GetLocation().x)
+		{
+			chaseVel.x = 2;
+			aimanager->SetVelocity(chaseVel);
+		}
+		else
+		{
+			chaseVel.z = 2;
+			aimanager->SetVelocity(chaseVel);
+		}
+	}
+	else
+	aimanager->GetFSM()->ChangeState(aimanager->GetPrevious());
+	//aimanager->GetFSM()->ChangeState(AiEvade::Instance());
 
 }
 void AiChase::Exit(AiManager* aimanager)
@@ -49,7 +67,8 @@ void AiExplore::Execute(AiManager* aimanager)
 {
 	// put code here
 		cout << "AiExplore::Execute()\n";
-		aimanager->GetFSM()->ChangeState(AiChase::Instance());
+		if(aimanager->GetVisible() == true)
+			aimanager->GetFSM()->ChangeState(AiChase::Instance());
 
 }
 void AiExplore::Exit(AiManager* aimanager)
