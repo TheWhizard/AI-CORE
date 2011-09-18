@@ -10,8 +10,15 @@ AiManager::AiManager(int id):BaseGameEntity(id),location(0.0, 0.0, 0.0),facing(1
 	}
 
 
-void AiManager::Update()
+void AiManager::Update(int f, int b, int l, int r, Vector3D pos, bool vis)
 {
+	magF = f;
+	magB = b;
+	magL = l;
+	magR = r;
+	playerPos = pos;
+	visible = vis;
+
 	cout << "AiManager::Update()\n";
 	m_pStateMachine->Update();
 }
