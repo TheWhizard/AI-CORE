@@ -35,7 +35,10 @@ public:
 	void ChangeState(State<AiManager>* pNewState);
 	void RevertToPreviousState();
 	AiManager(int id);
+	
 	void Update(int, int, int, int, Vector3D, bool);
+	void Update(void);
+
 	StateMachine<AiManager>*  GetFSM()const{return m_pStateMachine;}
 
 	//fetch aimanager attributes

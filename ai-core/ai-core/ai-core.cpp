@@ -22,3 +22,8 @@ void AiManager::Update(int f, int b, int l, int r, Vector3D pos, bool vis)
 	cout << "AiManager::Update()\n";
 	m_pStateMachine->Update();
 }
+
+void AiManager::Update(void)
+{
+	m_pStateMachine->Update();
+}
