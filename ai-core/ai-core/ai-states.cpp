@@ -39,8 +39,12 @@ void AiChase::Execute(AiManager* aimanager)
 		}
 	}
 	else
-	aimanager->GetFSM()->ChangeState(aimanager->GetPrevious());
-	//aimanager->GetFSM()->ChangeState(AiEvade::Instance());
+    //
+	// This code will not work
+	//aimanager->GetFSM()->ChangeState(aimanager->GetPrevious());
+	//
+	// This code works...
+	aimanager->GetFSM()->ChangeState(AiExplore::Instance());
 
 }
 void AiChase::Exit(AiManager* aimanager)

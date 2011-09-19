@@ -39,6 +39,8 @@ public:
 	void Update(int, int, int, int, Vector3D, bool);
 	void Update(void);
 
+	void SetStateExplore(void);
+
 	StateMachine<AiManager>*  GetFSM()const{return m_pStateMachine;}
 
 	//fetch aimanager attributes
@@ -56,9 +58,7 @@ public:
 	void SetVelocity(Vector3D vel) {velocity = vel;}
 	
 	~AiManager(){delete m_pStateMachine;}
-
-
-
 };
+
 
 #endif

@@ -2,8 +2,10 @@
 
 int main () 
 {
-	Vector3D vec;
+	Vector3D vec(0.00, 0.00, 0.00);
+	
 	AiManager Warren(1);
+	Warren.SetStateExplore();
 	for (int i=0; i<20; ++i)
 	{
 			Warren.Update(1,2,3,4,vec,true);
