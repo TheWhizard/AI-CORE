@@ -9,16 +9,19 @@ AiManager::AiManager(int id):BaseGameEntity(id)
 		m_pStateMachine = new StateMachine<AiManager>(this);
 	}
 
+//updates the AI by processing world information fed to it
 void AiManager::Update(int f, int b, int l, int r, Vector3D pos, bool vis)
 {
+	//number of spaces available for movement in each direction
 	magF = f;
 	magB = b;
 	magL = l;
 	magR = r;
+	//player position
 	playerPos = pos;
+	//is the player visible?
 	visible = vis;
 
-	cout << "AiManager::Update()\n";
 	m_pStateMachine->Update();
 }
 
