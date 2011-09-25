@@ -1,3 +1,5 @@
+//Contains names and prototypes of all AI State classes
+
 #ifndef _STATES_H_
 #define _STATES_H_
 

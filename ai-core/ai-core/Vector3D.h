@@ -13,6 +13,7 @@
 //
 //  Author: (originally)Mat Buckland 2002 (fup@ai-junkie.com)
 //
+//  Modified by: Nikolas Willingham
 //------------------------------------------------------------------------
 
 #ifndef S3VECTOR_H
