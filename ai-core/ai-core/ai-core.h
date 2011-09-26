@@ -21,10 +21,22 @@ private:
 	State<AiManager>*			m_pGlobalState;
 	StateMachine<AiManager>*	m_pStateMachine;
 
+	//
+	// location is the Location of the bot, facing is the direction 
+	// the bot is facing, and velocity is the speed the bot is 
+	// moving
+	//
 	Vector3D					location;
 	int							facing;
 	Vector3D					velocity;
-	//update() world information
+	//
+	// Update() world information
+	// This is how the bot sees the world, as a collection of 
+	// Magnitudes which are how many units the bot is from an 
+	// obsticle either in front, back. left or right and if the
+	// player is visible.  If the player is visible, what is the
+	// player's position
+	//
 	int							magF, magB, magL, magR;
 	Vector3D					playerPos;
 	bool						visible;
@@ -34,16 +46,27 @@ private:
 public:
 	void ChangeState(State<AiManager>* pNewState);
 	void RevertToPreviousState();
+	//
+	// Aimanager requires an id
+	//
 	AiManager(int id);
 	
+	// Prototype member functions for Update, overloaded Update,
 	void Update(int, int, int, int, Vector3D, bool);
 	void Update(void);
 
+	// Prototype member functions for Setting the initial state
+	// machine state
 	void SetStateExplore(void);
+	void SetStateEvade(void);
+	void SetStateAvoid(void);
+	void SetStateChase(void);
+	void SetStateFollowPath(void);
 
 	StateMachine<AiManager>*  GetFSM()const{return m_pStateMachine;}
 
-	//fetch aimanager attributes
+	// Public member functions to return bot information
+	// fetch aimanager attributes
 	Vector3D GetLocation() {return location;}
 	int GetFacing() {return facing;}
 	Vector3D GetPlayerPos() {return playerPos;}
@@ -109,7 +132,6 @@ public:
 	{
 		facing += addFace;
 	}
-
 	
 	~AiManager(){delete m_pStateMachine;}
 };
