@@ -7,7 +7,8 @@ AiManager::AiManager(int id):BaseGameEntity(id)
 	{
 		//
 		// Debug
-		//cout << "Creating State machine.\n";
+		//
+		cout << "Creating State machine.\n";
 		m_pStateMachine = new StateMachine<AiManager>(this);
 	}
 
@@ -38,6 +39,22 @@ void AiManager::Update(void)
 	// Required 
 	m_pStateMachine->Update();
 }
+
+
+void AiManager::ReadArray(Vector3D* a, int& n, int maxsize) {
+    //n = 0;  // start with an empty array.
+    //int* limit = a + maxsize;  // address after last element
+    //while (a < limit  &&  cin >> *a) {
+    //    a++;
+    //    n++;
+   // }
+    return;
+}
+//readArray(temps, size, 1000);
+
+
+
+
 
 //
 // Set initial state to AiExplore

@@ -9,6 +9,7 @@
 #include "BaseGameEntity.h"
 #include "ai-states.h"
 
+#include <string>
 
 // Name of AiManager Class
 class AiManager : public BaseGameEntity
@@ -46,6 +47,7 @@ private:
 public:
 	void ChangeState(State<AiManager>* pNewState);
 	void RevertToPreviousState();
+	State<AiManager>* GetPrevious() {return m_pPreviousState;}
 	//
 	// Aimanager requires an id
 	//
@@ -55,6 +57,7 @@ public:
 	void Update(int, int, int, int, Vector3D, bool);
 	void Update(void);
 
+	void ReadArray(Vector3D* a, int& n, int maxsize);
 	// Prototype member functions for Setting the initial state
 	// machine state
 	void SetStateExplore(void);
@@ -62,6 +65,9 @@ public:
 	void SetStateAvoid(void);
 	void SetStateChase(void);
 	void SetStateFollowPath(void);
+	//string StateName;
+
+	
 
 	StateMachine<AiManager>*  GetFSM()const{return m_pStateMachine;}
 
@@ -75,7 +81,7 @@ public:
 	int GetMagB() {return magB;}
 	int GetMagL() {return magL;}
 	int GetMagR() {return magR;}
-	State<AiManager>* GetPrevious() {return m_pPreviousState;}
+
 
 	//set velocity for AI depending on facing
 	void SetVelocity(int vel)
