@@ -61,7 +61,7 @@ void AiExplore::Execute(AiManager* aimanager)
 		//if the player is seen, change to Chase or Evade based on passive
 		if(aimanager->GetVisible() == true)
 		{
-			if(aimanager->GetPassive() == true)
+			if(aimanager->GetAggressive() == false)
 				aimanager->GetFSM()->ChangeState(AiEvade::Instance());
 			else
 				aimanager->GetFSM()->ChangeState(AiChase::Instance());

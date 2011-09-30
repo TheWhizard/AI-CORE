@@ -22,7 +22,7 @@ private:
 	StateMachine<AiManager>*	m_pStateMachine;
 
 	//passive or aggressive (sets Chase or Evade)
-	bool						passive;
+	bool						aggressive;
 	Vector3D					location;
 	int							facing;
 	Vector3D					velocity;
@@ -37,9 +37,7 @@ public:
 	void ChangeState(State<AiManager>* pNewState);
 	void RevertToPreviousState();
 	//Constructor with id and passive/aggressive setting
-	AiManager(int id, bool pas);
-	//Constructor with id, passive/aggressive setting, and initial facing (preferred)
-	AiManager(int id, bool pas, int fac);
+	AiManager(int id);
 	
 	void Update(int, int, int, int, Vector3D, bool);
 	void Update(void);
@@ -58,8 +56,14 @@ public:
 	int GetMagL() {return magL;}
 	int GetMagR() {return magR;}
 	Vector3D GetVelocity() {return velocity;}
-	bool GetPassive() {return passive;}
+	bool GetAggressive() {return aggressive;}
 	State<AiManager>* GetPrevious() {return m_pPreviousState;}
+
+	//set passive or aggressive for Chase and Evade
+	void SetAggressive(bool aggro)
+	{
+		aggressive = aggro;
+	}
 
 	//set velocity for AI depending on facing
 	void SetVelocity(int vel)
@@ -70,14 +74,17 @@ public:
 			velocity.x = vel;
 			velocity.z = 0;
 			break;
+
 		case 90:
 			velocity.x = 0;
 			velocity.z = vel;
 			break;
+
 		case 180:
 			velocity.x = -vel;
 			velocity.z = 0;
 			break;
+
 		case 270:
 			velocity.x = 0;
 			velocity.z = -vel;
@@ -110,11 +117,20 @@ public:
 		}
 	}
 
-	//set facing by adding to current facing
+	//set facing
 	//make sure it is in increments of 90
 	void SetFacing(int addFace)
 	{
-		facing += addFace;
+		facing = addFace;
+	}
+
+	//set up all the initial parameters for the bot
+	void Spawn(int face, Vector3D loc, Vector3D vel, bool aggro)
+	{
+		facing = face;
+		location = loc;
+		velocity = vel;
+		aggressive = aggro;
 	}
 
 	
