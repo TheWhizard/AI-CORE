@@ -21,6 +21,8 @@ private:
 	State<AiManager>*			m_pGlobalState;
 	StateMachine<AiManager>*	m_pStateMachine;
 
+	//passive or aggressive (sets Chase or Evade)
+	bool						passive;
 	Vector3D					location;
 	int							facing;
 	Vector3D					velocity;
@@ -34,7 +36,10 @@ private:
 public:
 	void ChangeState(State<AiManager>* pNewState);
 	void RevertToPreviousState();
-	AiManager(int id);
+	//Constructor with id and passive/aggressive setting
+	AiManager(int id, bool pas);
+	//Constructor with id, passive/aggressive setting, and initial facing (preferred)
+	AiManager(int id, bool pas, int fac);
 	
 	void Update(int, int, int, int, Vector3D, bool);
 	void Update(void);
@@ -52,6 +57,8 @@ public:
 	int GetMagB() {return magB;}
 	int GetMagL() {return magL;}
 	int GetMagR() {return magR;}
+	Vector3D GetVelocity() {return velocity;}
+	bool GetPassive() {return passive;}
 	State<AiManager>* GetPrevious() {return m_pPreviousState;}
 
 	//set velocity for AI depending on facing

@@ -3,11 +3,20 @@
 using namespace std;
 
 //AiManager::AiManager(int id):BaseGameEntity(id),location(0.0, 0.0, 0.0),facing(1.0,0.0,0.0),m_pCurrentState(AiExplore::Instance())
-AiManager::AiManager(int id):BaseGameEntity(id)
+AiManager::AiManager(int id, bool pas):BaseGameEntity(id)
 	{
 		cout << "Creating State machine.\n";
 		m_pStateMachine = new StateMachine<AiManager>(this);
+		AiManager::passive = pas;
 	}
+
+//Overloaded Constructor
+AiManager::AiManager(int id, bool pas, int fac):BaseGameEntity(id)
+{
+	m_pStateMachine = new StateMachine<AiManager>(this);
+	AiManager::passive = pas;
+	AiManager::facing = fac;
+}
 
 //updates the AI by processing world information fed to it
 void AiManager::Update(int f, int b, int l, int r, Vector3D pos, bool vis)
