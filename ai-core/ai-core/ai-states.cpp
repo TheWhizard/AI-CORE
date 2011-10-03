@@ -6,6 +6,8 @@
 #include <string>
 using namespace std;
 
+#define _DEBUG_
+
 // AiChase
 AiChase* AiChase::Instance()
 {
@@ -17,12 +19,16 @@ void AiChase::Enter(AiManager* aimanager)
 
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiChase::Enter()\n";
+#endif
 }
 void AiChase::Execute(AiManager* aimanager)
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiChase::Execute()\n";
+#endif
 
 	//if the player is visible, increase velocity to 2 in the player direction
 	//else go back to exploring
@@ -35,7 +41,9 @@ void AiChase::Execute(AiManager* aimanager)
 void AiChase::Exit(AiManager* aimanager)
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiChase::Exit()\n";
+#endif
 }
 
 
@@ -50,12 +58,16 @@ void AiExplore::Enter(AiManager* aimanager)
 
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiExplore::Enter()\n";
+#endif
 }
 void AiExplore::Execute(AiManager* aimanager)
 {
 	//Runs wall avoid (hugs right wall) and wanders
+#ifdef _DEBUG_
 		cout << "AiExplore::Execute()\n";
+#endif
 		aimanager->WallAvoid();
 		aimanager->SetVelocity(1);
 
@@ -70,7 +82,9 @@ void AiExplore::Execute(AiManager* aimanager)
 void AiExplore::Exit(AiManager* aimanager)
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiExplore::Exit()\n";
+#endif
 }
 
 
@@ -85,12 +99,16 @@ void AiEvade::Enter(AiManager* aimanager)
 
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiEvade::Enter()\n";
+#endif
 }
 void AiEvade::Execute(AiManager* aimanager)
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiChase::Execute()\n";
+#endif
 
 	//if the player is seen, run away
 	//else go back to exploring
@@ -114,7 +132,9 @@ void AiEvade::Execute(AiManager* aimanager)
 void AiEvade::Exit(AiManager* aimanager)
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiEvade::Exit()\n";
+#endif
 }
 
 
@@ -129,18 +149,24 @@ void AiAvoid::Enter(AiManager* aimanager)
 
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiAvoid::Enter()\n";
+#endif
 }
 void AiAvoid::Execute(AiManager* aimanager)
 {
 	// put code here
+#ifdef _DEBUG_
 		cout << "AiAvoid::Execute()\n";
+#endif
 		aimanager->GetFSM()->ChangeState(AiFollowPath::Instance());
 }
 void AiAvoid::Exit(AiManager* aimanager)
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiAvoid::Exit()\n";
+#endif
 }
 
 
@@ -155,17 +181,23 @@ void AiFollowPath::Enter(AiManager* aimanager)
 
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiFollowPath::Enter()\n";
+#endif
 }
 void AiFollowPath::Execute(AiManager* aimanager)
 {
 	// put code here
+#ifdef _DEBUG_
 		cout << "AiFollowPath::Execute()\n";
+#endif
 		aimanager->GetFSM()->ChangeState(AiExplore::Instance());
 
 }
 void AiFollowPath::Exit(AiManager* aimanager)
 {
 	// put code here
+#ifdef _DEBUG_
 	cout << "AiFollowPath::Exit()\n";
+#endif
 }

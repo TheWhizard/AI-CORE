@@ -1,5 +1,6 @@
 #include "ai-core.h"
 
+#define _DEBUG_
 using namespace std;
 
 //AiManager::AiManager(int id):BaseGameEntity(id),location(0.0, 0.0, 0.0),facing(1.0,0.0,0.0),m_pCurrentState(AiExplore::Instance())
@@ -8,7 +9,9 @@ AiManager::AiManager(int id):BaseGameEntity(id)
 		//
 		// Debug
 		//
+#ifdef _DEBUG_
 		cout << "Creating State machine.\n";
+#endif
 		m_pStateMachine = new StateMachine<AiManager>(this);
 	}
 
@@ -51,21 +54,6 @@ void AiManager::Update(void)
 	// Required 
 	m_pStateMachine->Update();
 }
-
-
-void AiManager::ReadArray(Vector3D* a, int& n, int maxsize) {
-    //n = 0;  // start with an empty array.
-    //int* limit = a + maxsize;  // address after last element
-    //while (a < limit  &&  cin >> *a) {
-    //    a++;
-    //    n++;
-   // }
-    return;
-}
-//readArray(temps, size, 1000);
-
-
-
 
 
 //

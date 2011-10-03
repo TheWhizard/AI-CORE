@@ -17,20 +17,48 @@ class AiManager : public BaseGameEntity
 	
 	// Declare Private Methods
 private:
-	State<AiManager>*			m_pCurrentState;
-	State<AiManager>*			m_pPreviousState;
-	State<AiManager>*			m_pGlobalState;
-	StateMachine<AiManager>*	m_pStateMachine;
+	State<AiManager>*			m_pCurrentState;  // Used by State machine
+	State<AiManager>*			m_pPreviousState; // Used by State machine
+	State<AiManager>*			m_pGlobalState;   // Used by State machine
+	StateMachine<AiManager>*	m_pStateMachine;  // Used by State machine
 
 	//
 	// location is the Location of the bot, facing is the direction 
 	// the bot is facing, velocity is the speed the bot is 
 	// moving, and aggressive is the aggressive or passive state of the bot
 	//
-	Vector3D					location;
-	int							facing;
-	Vector3D					velocity;
-	bool						aggressive;
+
+	//
+	// Vector3D location
+	//
+	// Location of the bot as a Vector3D which has the members x, y, and z. 
+	// Vector can be set via: Vector3D vec (x, y, z);
+	Vector3D location;  
+	
+	//
+	// int facing
+	//
+    // The bot’s facing in the world. This works off of increments of 90 (degrees) in the following way:
+	// 0 = bot is facing toward the positive x-axis
+	// 90 = bot is facing toward the positive z-axis
+	// 180 = bot is facing toward the negative x-axis
+	// 270 = bot is facing toward the negative z-axis
+	int	facing;
+
+	//
+	// Vector3D velocity
+	//
+	// Velocity of the bot as a Vector3D which has the members x, y, and z. 
+	// Vector can be set via: Vector3D vec(x, y, z);
+	Vector3D velocity;
+
+	//
+	// bool agressive
+	//
+	// Whether or not the bot to aggressive if true or passive if false. 
+	// Aggressive bots will chase players, while passive bots will evade them.
+	bool aggressive;
+
 	//
 	// Update() world information
 	// This is how the bot sees the world, as a collection of 
@@ -39,36 +67,62 @@ private:
 	// player is visible.  If the player is visible, what is the
 	// player's position
 	//
-	int							magF, magB, magL, magR;
-	Vector3D					playerPos;
-	bool						visible;
+	
+	//
+	// int	magF, magB, magL, magR
+	//
+	// int magF	- The magnitude of movable spaces in front of the bot depending on the bot’s facing.
+	// int magB	- The magnitude of movable spaces behind of the bot depending on the bot’s facing.
+	// int magL	- The magnitude of movable spaces right of the bot depending on the bot’s facing.
+	// int magR	- The magnitude of movable spaces left of the bot depending on the bot’s facing.
+	int	magF, magB, magL, magR;
+
+	//
+	// Vector3D playerPos
+	//
+	// Location of the player as a Vector3D which has the members x, y, and z. 
+	// Vector can be set via: Vector3D vec (x, y, z);
+	Vector3D playerPos;
+	
+	//
+	// bool visible
+	//
+	// Whether or not the bot can see the player. If the player is in the bot’s line-of-sight, this should be set to true.
+	// Used to switch between Explore and Chase/Evade states.
+	bool visible;
 
 	
 	// Declare Public Methods
 public:
-	void ChangeState(State<AiManager>* pNewState);
-	void RevertToPreviousState();
+	void ChangeState(State<AiManager>* pNewState); // Syntax is scary, do not use
+	void RevertToPreviousState(); // Syntax is scary, do not use
 	State<AiManager>* GetPrevious() {return m_pPreviousState;}
 	//
-	// Aimanager requires an id
+	// Aimanager requires a unique id
 	//
 	AiManager(int id);
 	
 	// Prototype member functions for Update, overloaded Update,
+	//
+	// void Update(int magF, int magB, int magL, int magR, Vector3D playerPosition, bool visible)
+	//		Inputs: int magF, magB, magL, magR – Magnitudes for movable spaces in front of, 
+	//			behind, to the left of, and to the right of the bot.
+	//			Vector3D playerPosition - The player's position as a Vector3D
+	//			bool visible - True if the player is visible to the bot, otherwise false
+	//		Outputs: N/A
+	//		General Operation: Updates the bot with new world data (recommended)
 	void Update(int, int, int, int, Vector3D, bool);
-	void Update(void);
 
-	void ReadArray(Vector3D* a, int& n, int maxsize);
-	// Prototype member functions for Setting the initial state
-	// machine state
-	void SetStateExplore(void);
-	void SetStateEvade(void);
-	void SetStateAvoid(void);
-	void SetStateChase(void);
-	void SetStateFollowPath(void);
-	//string StateName;
+	void Update(void); // Will run the current state without any new information
 
 	
+	// Prototype member functions for Setting the initial state
+	// machine state
+	void SetStateExplore(void); // Set bot state to AiExplore
+	void SetStateEvade(void); // Set bot state to AiEvade
+	void SetStateAvoid(void); // Set bot state to AiAvoid
+	void SetStateChase(void);// Set bot state to AiChase
+	void SetStateFollowPath(void); // Set bot state to AiFollowPath
 
 	StateMachine<AiManager>*  GetFSM()const{return m_pStateMachine;}
 
@@ -228,6 +282,21 @@ public:
 		aggressive = aggro;
 	}
 	
+	void AddWayPoint(Vector3D wayPoint);
+	// void AddWayPoint(Vector3D wayPoint)
+	/*	Inputs: Vector3D waypoint
+		Outputs: N/A
+		General Operation: Adds a waypoint (x,y,z) to the WayPointArray*/
+
+	void AddAvoidObstacle(Vector3D obstacleLocation);
+	// AddAvoidObstacle(Vector3d obstacleLocation)
+	/*
+		Inputs: Vector3d obstacleLocation
+		Outputs: N/A
+		General Operation: Adds the location of an obstacle to avoid (x,y,z) */
+
+
+
 	/*~AiManager(void)
 	Inputs: N/A
 	Outputs: N/A
