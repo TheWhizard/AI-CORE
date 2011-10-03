@@ -2,48 +2,35 @@
 
 int main () 
 {
-	//
-	// Setting an initial vector
-	//
-	Vector3D vec(0.00, 0.00, 0.00);
-	int vector_array_size = 5;
-	Vector3D * vector_array = NULL;
+	// Create a vector for Bot to Spawn
+	Vector3D botVec(1.0, 0.0, 3.0)
+	// Create a velocity for the Bot to be moving when it spawns
+	botVel = 1.0;
+	// Create a direction for the bot to be facing
+	facing = 90;
+	// Set bot to aggressive 1 or not aggressive 0
+	aggressive = 1;
 
-	vector_array = new Vector3D[vector_array_size];
-	for (int i=0; i<vector_array_size; i++) {
-		vector_array[i]=Vector3D::Vector3D(i,i,i);
-	}
-	
+	// Create a location for the player
+	Vector3D vec(0.0, 0.0, 0.0)
 	//
 	// Instantiate an AiManager bot named Warren with an ID of 1
 	//
 	AiManager Warren(1);
-	//
-	// Set the initial STATE MACHINE state to Explore
-	//
-	cout << "SetStateExplore()\n";
+	
+	// Spawn the Bot at the botVec location, etc.
+	Warren.Spawn(facing, botVec, botVel, aggressive);
+	// Set the initial bot state to Explore
 	Warren.SetStateExplore();
-	Warren.Update(1,2,3,4,vec,true);
-	Sleep(800);
-	cout << "SetStateChase()\n";
-	Warren.SetStateChase();
-	Warren.Update(1,2,3,4,vec,true);
-	Sleep(800);
-	cout << "SetStateEvade()\n";
-	Warren.SetStateEvade();
-	Warren.Update(1,2,3,4,vec,true);
-	Sleep(800);
-	cout << "SetStateFollowPath()\n";
-	Warren.SetStateFollowPath();
-	Warren.Update(1,2,3,4,vec,true);
-	Sleep(800);
-	cout << "SetStateAvoid()\n";
-	Warren.SetStateAvoid();
-	Warren.Update(1,2,3,4,vec,true);
-	Sleep(800);
-//cout << "GetLocation " << Warren.GetLocation() << "\n";
-	//cout << "GetFacing " << Warren.GetFacing() << "\n";
-	//cout << "GetPlayerPos " << Warren.GetPlayerPos() << "\n";
+	// Tell the bot it can't see any direction to go 
+	// be sure to update this in your game loop
+	Warren.Update(0,0,0,0,vec,false);
+	// Other possibilities
+	// Warren.SetStateChase();
+	// Warren.SetStateEvade();
+	// Warren.SetStateFollowPath();
+	// Warren.SetStateAvoid();
+
 
 	//
 	// Normally this would be some sort of almost infinite loop
@@ -55,8 +42,13 @@ int main ()
 		// The Instantiation of AiManager called Warren
 		// gets update by running Warren.Update
 		//
+	
+		// Calculate magF, magB, magL, magR, the player position (if seen)
+		// and the player visible to TRUE if we can see the player
+
+		// You will have to calculate the Line of Sight 
+		// Hint: the bots location is Warren.GetLocation() and returns Vector3D
 		Warren.Update(1,2,3,4,vec,true);
-		Sleep(800);
 
 	}
 	return 0;
