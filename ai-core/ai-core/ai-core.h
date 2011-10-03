@@ -24,12 +24,13 @@ private:
 
 	//
 	// location is the Location of the bot, facing is the direction 
-	// the bot is facing, and velocity is the speed the bot is 
-	// moving
+	// the bot is facing, velocity is the speed the bot is 
+	// moving, and aggressive is the aggressive or passive state of the bot
 	//
 	Vector3D					location;
 	int							facing;
 	Vector3D					velocity;
+	bool						aggressive;
 	//
 	// Update() world information
 	// This is how the bot sees the world, as a collection of 
@@ -82,6 +83,11 @@ public:
 	int GetMagL() {return magL;}
 	int GetMagR() {return magR;}
 
+	//set aggressive or passive to determine Chase or Evade
+	void SetAggressive(bool aggro)
+	{
+		aggressive = aggro;
+	}
 
 	//set velocity for AI depending on facing
 	void SetVelocity(int vel)
@@ -137,6 +143,15 @@ public:
 	void SetFacing(int addFace)
 	{
 		facing += addFace;
+	}
+	
+	//setup all initial parameters of the bot
+	void Spawn(int face, Vector3D loc, int vel, bool aggro)
+	{
+		facing = face;
+		location = loc;
+		SetVelocity(vel);
+		aggressive = aggro;
 	}
 	
 	~AiManager(){delete m_pStateMachine;}
