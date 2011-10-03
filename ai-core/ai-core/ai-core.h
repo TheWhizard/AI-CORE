@@ -74,24 +74,83 @@ public:
 
 	// Public member functions to return bot information
 	// fetch aimanager attributes
+
+	/*Vector3D GetLocation(void)
+	Inputs: N/A
+	Outputs: Vector3D location
+	General Operation: Returns location as a Vector3D*/
 	Vector3D GetLocation() {return location;}
+
+	/*int GetFacing(void)
+	Inputs: N/A
+	Outputs: int facing
+	General Operation: Returns facing as an int*/
 	int GetFacing() {return facing;}
+
+	/*Vector3D GetPlayerPos(void)
+	Inputs: N/A
+	Outputs: Vector3D playerPos
+	General Operation: Returns playerPos as a Vector3D*/
 	Vector3D GetPlayerPos() {return playerPos;}
+
+	/*bool GetVisible(void)
+	Inputs: N/A
+	Outputs: bool visible
+	General Operation: Returns true or false for if the player is
+					   visible - used to switch states*/
 	bool GetVisible() {return visible;}
+
+	/*int GetMagF(void)
+	Inputs: N/A
+	Outputs: int magF
+	General Operation: Returns magF as an int*/
 	int GetMagF() {return magF;}
+
+	/*int GetMagB(void)
+	Inputs: N/A
+	Outputs: int magB
+	General Operation: Returns magB as an int*/
 	int GetMagB() {return magB;}
+
+	/*int GetMagL(void)
+	Inputs: N/A
+	Outputs: int magL
+	General Operation: Returns magL as an int*/
 	int GetMagL() {return magL;}
+
+	/*int GetMagR(void)
+	Inputs: N/A
+	Outputs: int magR
+	General Operation: Returns magR as an int*/
 	int GetMagR() {return magR;}
+
+	/*Vector3D GetVelocity(void)
+	Inputs: N/A
+	Outputs: Vector3D velocity
+	General Operation: Returns velocity as a Vector3D*/
 	Vector3D GetVelocity() {return velocity;}
+
+	/*bool GetAggressive(void)
+	Inputs: N/A
+	Outputs: bool aggressive
+	General Operation: Returns true or false for if the bot is aggressive
+					   - used to switch states*/
 	bool GetAggressive() {return aggressive;}
 
-	//set aggressive or passive to determine Chase or Evade
+	/*void SetAggressive(bool aggro)
+	Inputs: bool aggro
+	Outputs: N/A
+	General Operation: Used to set bool aggressive*/
 	void SetAggressive(bool aggro)
 	{
 		aggressive = aggro;
 	}
 
-	//set velocity for AI depending on facing
+	/*void SetVelocity(int vel)
+	Inputs: int vel
+	Outputs: N/A
+	General Operation: Used to set bot velocity according
+					   to current facing*/
 	void SetVelocity(int vel)
 	{
 		switch(facing)
@@ -115,8 +174,11 @@ public:
 		}
 	}
 
-	//avoid wall collisions by hugging the right wall
-	//turns right if available, turns around if dead end
+	/*void WallAvoid(void)
+	Inputs: N/A
+	Outputs: N/A
+	General Operation: Runs a wall avoidance algorithm; turns
+					   right when able and turns around when stuck*/
 	void WallAvoid()
 	{
 		if(magR > 0)
@@ -140,14 +202,24 @@ public:
 		}
 	}
 
-	//set facing by adding to current facing
+	/*void SetFacing(int addFace)
+	Inputs: int addFace
+	Outputs: N/A
+	General Operation: Used to set bot facing*/
 	//make sure it is in increments of 90
 	void SetFacing(int addFace)
 	{
 		facing += addFace;
 	}
 	
-	//setup all initial parameters of the bot
+	/*void Spawn(int face, Vector3D loc, int vel, bool aggro)
+	Inputs: int face - desired facing to be set
+		Vector3D loc - desired bot location
+		int vel - desired initial velocity
+		bool aggro - desired aggressive attribute
+	Outputs: N/A
+	General Operation: Used to set the initial attributes of the bot;
+					   call after instantiating bot*/
 	void Spawn(int face, Vector3D loc, int vel, bool aggro)
 	{
 		facing = face;
@@ -156,6 +228,10 @@ public:
 		aggressive = aggro;
 	}
 	
+	/*~AiManager(void)
+	Inputs: N/A
+	Outputs: N/A
+	General Operation: Deconstructor*/
 	~AiManager(){delete m_pStateMachine;}
 };
 
