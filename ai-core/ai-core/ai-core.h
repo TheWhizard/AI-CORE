@@ -82,6 +82,8 @@ public:
 	int GetMagB() {return magB;}
 	int GetMagL() {return magL;}
 	int GetMagR() {return magR;}
+	Vector3D GetVelocity() {return velocity;}
+	bool GetAggressive() {return aggressive;}
 
 	//set aggressive or passive to determine Chase or Evade
 	void SetAggressive(bool aggro)
