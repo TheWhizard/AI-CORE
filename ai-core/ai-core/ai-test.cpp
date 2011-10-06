@@ -3,16 +3,16 @@
 int main () 
 {
 	// Create a vector for Bot to Spawn
-	Vector3D botVec(1.0, 0.0, 3.0)
+	Vector3D botVec(1.0, 0.0, 3.0);
 	// Create a velocity for the Bot to be moving when it spawns
-	botVel = 1.0;
+	double botVel = 1.0;
 	// Create a direction for the bot to be facing
-	facing = 90;
+	double facing = 90;
 	// Set bot to aggressive 1 or not aggressive 0
-	aggressive = 1;
+	bool aggressive = 1;
 
 	// Create a location for the player
-	Vector3D vec(0.0, 0.0, 0.0)
+	Vector3D vec(0.0, 0.0, 0.0);
 	//
 	// Instantiate an AiManager bot named Warren with an ID of 1
 	//
