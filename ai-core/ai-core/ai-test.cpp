@@ -31,6 +31,11 @@ int main ()
 	// Warren.SetStateFollowPath();
 	// Warren.SetStateAvoid();
 
+	Point3D me;
+	me.x=1.2;
+	me.y=2.4;
+	me.z=3.5;
+	Warren.AddAvoidObstacle(me);
 
 	//
 	// Normally this would be some sort of almost infinite loop

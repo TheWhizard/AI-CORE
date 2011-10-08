@@ -120,3 +120,25 @@ void AiManager::SetStateFollowPath()
 {
 	m_pStateMachine->SetCurrentState(AiFollowPath::Instance());
 }
+
+// void AiManager::AddWayPoint(Vector3D wayPoint)
+/*	Inputs: Vector3D waypoint
+	Outputs: N/A
+	General Operation: Adds a waypoint (x,y,z) to the WayPointArray*/
+void AiManager::AddWayPoint(Point3D wayPoint)
+{
+	#ifdef _DEBUG_
+	cout << "Adding a 3D way point x=" << wayPoint.x << " y=" << wayPoint.y << " z=" << wayPoint.z << "\n";
+	#endif
+    wayPointArray.push_back(wayPoint);
+}
+
+// AiManager::AddAvoidObstacle(Vector3d obstacleLocation)
+/*	Inputs: Vector3d obstacleLocation
+	Outputs: N/A
+	General Operation: Adds the location of an obstacle to avoid (x,y,z) */
+void AiManager::AddAvoidObstacle(Point3D obstacleLocation)
+{
+	cout << "Adding a object 3D point x=" << obstacleLocation.x << " y=" << obstacleLocation.y << " z=" << obstacleLocation.z << "\n";
+    obstacleLocationArray.push_back(obstacleLocation);
+}

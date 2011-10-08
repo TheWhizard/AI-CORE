@@ -3,13 +3,22 @@
 
 #include <iostream>
 #include <math.h>
+#include <string>
+#include <vector>
 
 #include "Vector3d.h"
 #include "StateMachine.h"
 #include "BaseGameEntity.h"
 #include "ai-states.h"
 
-#include <string>
+
+struct Point3D
+    {
+        float x;
+        float y;
+        float z;
+    };
+
 
 // Name of AiManager Class
 class AiManager : public BaseGameEntity
@@ -90,6 +99,13 @@ private:
 	// Whether or not the bot can see the player. If the player is in the bot’s line-of-sight, this should be set to true.
 	// Used to switch between Explore and Chase/Evade states.
 	bool visible;
+
+	//
+	// "Smart" Arrays to hold way points and obtacles to avoid
+	//
+	vector<Point3D> wayPointArray;
+	vector<Point3D> obstacleLocationArray;
+
 
 	
 	// Declare Public Methods
@@ -282,13 +298,13 @@ public:
 		aggressive = aggro;
 	}
 	
-	void AddWayPoint(Vector3D wayPoint);
+	void AddWayPoint(Point3D wayPoint);
 	// void AddWayPoint(Vector3D wayPoint)
 	/*	Inputs: Vector3D waypoint
 		Outputs: N/A
 		General Operation: Adds a waypoint (x,y,z) to the WayPointArray*/
 
-	void AddAvoidObstacle(Vector3D obstacleLocation);
+	void AddAvoidObstacle(Point3D obstacleLocation);
 	// AddAvoidObstacle(Vector3d obstacleLocation)
 	/*
 		Inputs: Vector3d obstacleLocation
