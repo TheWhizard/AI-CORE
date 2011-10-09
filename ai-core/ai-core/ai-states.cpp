@@ -148,18 +148,30 @@ AiAvoid* AiAvoid::Instance()
 void AiAvoid::Enter(AiManager* aimanager)
 
 {
-	// put code here
+
 #ifdef _DEBUG_
 	cout << "AiAvoid::Enter()\n";
 #endif
 }
 void AiAvoid::Execute(AiManager* aimanager)
 {
-	// put code here
 #ifdef _DEBUG_
-		cout << "AiAvoid::Execute()\n";
+	cout << "AiAvoid::Execute()\n";
+	Point3D temp;
+	for (int i=0; i<aimanager->GetObstacleCount(); i++)
+	{
+		temp=aimanager->GetObstacleLocation(i);
+		cout << "Obstacle #" << i << "\n";
+		cout << "--------------\n" ;
+		cout << "x=" << temp.x << "\n";
+		cout << "y=" << temp.y << "\n";
+		cout << "z=" << temp.z << "\n";
+		cout << "\n\n";
 #endif
-		aimanager->GetFSM()->ChangeState(AiFollowPath::Instance());
+	}
+
+	// put code here
+
 }
 void AiAvoid::Exit(AiManager* aimanager)
 {
@@ -185,14 +197,27 @@ void AiFollowPath::Enter(AiManager* aimanager)
 	cout << "AiFollowPath::Enter()\n";
 #endif
 }
+
 void AiFollowPath::Execute(AiManager* aimanager)
 {
-	// put code here
-#ifdef _DEBUG_
-		cout << "AiFollowPath::Execute()\n";
-#endif
-		aimanager->GetFSM()->ChangeState(AiExplore::Instance());
 
+#ifdef _DEBUG_
+	cout << "AiFollowPath::Execute()\n";
+	Point3D temp;
+
+	for (int i=0; i<aimanager->GetWayPointCount(); i++)
+	{
+		temp=aimanager->GetWayPointLocation(i);
+		cout << "Way Point #" << i << "\n";
+		cout << "--------------\n" ;
+		cout << "x=" << temp.x << "\n";
+		cout << "y=" << temp.y << "\n";
+		cout << "z=" << temp.z << "\n";
+		cout << "\n\n";
+	}
+#endif
+
+	// put code here
 }
 void AiFollowPath::Exit(AiManager* aimanager)
 {

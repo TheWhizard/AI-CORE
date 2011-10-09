@@ -37,11 +37,41 @@ int main ()
 	me.z=3.5;
 	Warren.AddAvoidObstacle(me);
 
+	me.x=4.1;
+	me.y=5.2;
+	me.z=6.3;
+	Warren.AddAvoidObstacle(me);
+
+	me.x=9.0;
+	me.y=7.7;
+	me.z=8.6;
+	Warren.AddAvoidObstacle(me);
+
+	Warren.SetStateAvoid();
+	Warren.Update(0,0,0,0,vec,false);
+//
+	me.x=9.9;
+	me.y=0.0;
+	me.z=10.23;
+	Warren.AddWayPoint(me);
+
+	me.x=10.71;
+	me.y=0.0;
+	me.z=33.33;
+	Warren.AddWayPoint(me);
+
+	me.x=0.0;
+	me.y=0.0;
+	me.z=0.0;
+	Warren.AddWayPoint(me);
+
+	Warren.SetStateFollowPath();
+	Warren.Update(0,0,0,0,vec,false);
 	//
 	// Normally this would be some sort of almost infinite loop
 	// This runs through 20 times, and calls update
 	//
-	for (int i=0; i<20; ++i)
+	/*for (int i=0; i<20; ++i)
 	{
 		//
 		// The Instantiation of AiManager called Warren
@@ -56,5 +86,6 @@ int main ()
 		Warren.Update(1,2,3,4,vec,true);
 
 	}
+	*/
 	return 0;
 }

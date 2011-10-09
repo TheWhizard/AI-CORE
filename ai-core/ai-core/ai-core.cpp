@@ -127,9 +127,9 @@ void AiManager::SetStateFollowPath()
 	General Operation: Adds a waypoint (x,y,z) to the WayPointArray*/
 void AiManager::AddWayPoint(Point3D wayPoint)
 {
-	#ifdef _DEBUG_
+#ifdef _DEBUG_
 	cout << "Adding a 3D way point x=" << wayPoint.x << " y=" << wayPoint.y << " z=" << wayPoint.z << "\n";
-	#endif
+#endif
     wayPointArray.push_back(wayPoint);
 }
 
@@ -139,6 +139,8 @@ void AiManager::AddWayPoint(Point3D wayPoint)
 	General Operation: Adds the location of an obstacle to avoid (x,y,z) */
 void AiManager::AddAvoidObstacle(Point3D obstacleLocation)
 {
+#ifdef _DEBUG_
 	cout << "Adding a object 3D point x=" << obstacleLocation.x << " y=" << obstacleLocation.y << " z=" << obstacleLocation.z << "\n";
+#endif
     obstacleLocationArray.push_back(obstacleLocation);
 }

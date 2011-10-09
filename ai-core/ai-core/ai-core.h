@@ -311,7 +311,26 @@ public:
 		Outputs: N/A
 		General Operation: Adds the location of an obstacle to avoid (x,y,z) */
 
+	int GetObstacleCount()
+	{
+		return obstacleLocationArray.size();
+	}
 
+	Point3D GetObstacleLocation(int number)
+	{
+		return obstacleLocationArray[number];
+	}
+//
+
+		int GetWayPointCount()
+	{
+		return wayPointArray.size();
+	}
+
+	Point3D GetWayPointLocation(int number)
+	{
+		return wayPointArray[number];
+	}
 
 	/*~AiManager(void)
 	Inputs: N/A
