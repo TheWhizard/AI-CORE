@@ -31,6 +31,8 @@ private:
 	State<AiManager>*			m_pGlobalState;   // Used by State machine
 	StateMachine<AiManager>*	m_pStateMachine;  // Used by State machine
 
+
+
 	//
 	// location is the Location of the bot, facing is the direction 
 	// the bot is facing, velocity is the speed the bot is 
@@ -130,6 +132,9 @@ public:
 	void Update(int, int, int, int, Vector3D, bool);
 
 	void Update(void); // Will run the current state without any new information
+
+
+	
 
 	
 	// Prototype member functions for Setting the initial state

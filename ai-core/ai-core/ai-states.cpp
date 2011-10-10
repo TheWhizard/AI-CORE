@@ -58,6 +58,9 @@ void AiExplore::Enter(AiManager* aimanager)
 
 {
 	// put code here
+	{
+		cout << "Woot. We did it!\n";
+	}
 #ifdef _DEBUG_
 	cout << "AiExplore::Enter()\n";
 #endif
