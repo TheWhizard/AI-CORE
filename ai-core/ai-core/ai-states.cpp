@@ -30,10 +30,16 @@ void AiChase::Execute(AiManager* aimanager)
 	cout << "AiChase::Execute()\n";
 #endif
 
+	aimanager->SetName(char('Ch'));
 	//if the player is visible, increase velocity to 2 in the player direction
 	//else go back to exploring
 	if(aimanager->GetLocation() != aimanager->GetPlayerPos() && aimanager->GetVisible() == true)
-		aimanager->SetVelocity(2);
+	{
+		//update bot velocity
+		aimanager->SetVelocity(20);
+		//update bot location
+		aimanager->UpdateLocation();
+	}
 	else
 		aimanager->GetFSM()->ChangeState(AiExplore::Instance());
 
@@ -71,8 +77,13 @@ void AiExplore::Execute(AiManager* aimanager)
 #ifdef _DEBUG_
 		cout << "AiExplore::Execute()\n";
 #endif
+		aimanager->SetName(char('Ex'));
+		//run wall avoidance
 		aimanager->WallAvoid();
-		aimanager->SetVelocity(1);
+		//set bot velocity
+		aimanager->SetVelocity(10);
+		//update bot location
+		aimanager->UpdateLocation();
 
 		//if player is seen, change to Chase or Evade based on aggressive
 		if(aimanager->GetVisible() == true)
@@ -110,26 +121,25 @@ void AiEvade::Execute(AiManager* aimanager)
 {
 	// put code here
 #ifdef _DEBUG_
-	cout << "AiChase::Execute()\n";
+	cout << "AiEvade::Execute()\n";
 #endif
 
 	//if the player is seen, run away
 	//else go back to exploring
 	if(aimanager->GetLocation() != aimanager->GetPlayerPos() && aimanager->GetVisible() == true)
 	{
+		aimanager->SetName(char('Ev'));
+		//run wall avoidance
+		aimanager->WallAvoid();
 		//set velocity negative to player direction
-		aimanager->SetVelocity(-2);
-		//run custom wall avoidance for when it hits a wall running away
-		if(aimanager->GetMagB() == 0)
-		{
-			if(aimanager->GetMagL() > 0)
-				aimanager->SetFacing(270);
-			else if(aimanager->GetMagR() > 0)
-				aimanager->SetFacing(90);
-		}
+		aimanager->SetVelocity(-20);
+		//update bot's location
+		aimanager->UpdateLocation();
 	}
 	else
+
 		aimanager->GetFSM()->ChangeState(AiExplore::Instance());
+
 
 }
 void AiEvade::Exit(AiManager* aimanager)
