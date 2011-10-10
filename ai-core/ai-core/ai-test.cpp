@@ -2,6 +2,115 @@
 
 int main () 
 {
+
+	/*Nik's tests
+	//
+	// Setting an initial vector
+	//
+	Vector3D vec(0.00, 0.00, 0.00);
+	int vector_array_size = 5;
+	Vector3D * vector_array = NULL;
+
+	vector_array = new Vector3D[vector_array_size];
+	for (int i=0; i<vector_array_size; i++) {
+		vector_array[i]=Vector3D::Vector3D(i,i,i);
+	}
+
+	AiManager test(1);
+	test.Spawn(0, vec, 0, false);
+
+	
+	/*Explore test
+	Vector3D vecExplore(10, 10, 10);
+	test.SetStateExplore();
+
+
+	//facing should = 0
+	test.Update(2,0,0,0,vecExplore,false);
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+
+	test.Update(1,1,0,0,vecExplore,false);
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+
+	//facing should change to 270
+	test.Update(0,2,0,3,vecExplore,false);
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+
+	test.Update(2,1,0,0,vecExplore,false);
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+
+	//facing should change to 180
+	test.Update(1,2,0,1,vecExplore,false);
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+
+	//facing should change to 0
+	test.Update(0,1,0,0,vecExplore,false);
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+	
+	//Test passed.
+	*/
+	
+	
+
+	/*Chase test
+	Vector3D vecChase(5,0,0);
+	test.SetStateChase();
+
+	cout << test.GetVelocity().x << " " << test.GetVelocity().z << endl;
+
+	test.Update(5,0,0,0,vecChase,true);
+	cout << test.GetVelocity().x << " " << test.GetVelocity().z << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+	
+	//Test passed
+	*/
+
+	/*Evade test
+	Vector3D vecEvade(2,0,0);
+	test.SetStateEvade();
+
+	test.Update(2,4,0,0,vecEvade,true);
+	cout << test.GetVelocity().x << " " << test.GetVelocity().z << endl;
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+	cout << endl;
+
+	test.Update(4,2,0,0,vecEvade,true);
+	cout << test.GetVelocity().x << " " << test.GetVelocity().z << endl;
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+	cout << endl;
+
+	test.Update(6,0,2,2,vecEvade,true);
+	cout << test.GetVelocity().x << " " << test.GetVelocity().z << endl;
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+	cout << endl;
+
+	test.Update(1,1,0,0,vecEvade,false);
+	cout << test.GetVelocity().x << " " << test.GetVelocity().z << endl;
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+	cout << endl;
+
+		test.Update(1,1,0,0,vecEvade,false);
+	cout << test.GetVelocity().x << " " << test.GetVelocity().z << endl;
+	cout << test.GetFacing() << endl;
+	cout << test.GetLocation().x << " " << test.GetLocation().z << endl;
+	cout << endl;
+
+
+	//Test passed
+	*/
+
+
+	
 	// Create a vector for Bot to Spawn
 	Vector3D botVec(1.0, 0.0, 3.0);
 	// Create a velocity for the Bot to be moving when it spawns

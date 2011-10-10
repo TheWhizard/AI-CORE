@@ -69,6 +69,13 @@ private:
 	bool aggressive;
 
 	//
+	//char currentStateName
+	//
+	//The English name of the current state as a char
+	//Used to determine states for certain functions
+	char currentStateName;
+
+	//
 	// Update() world information
 	// This is how the bot sees the world, as a collection of 
 	// Magnitudes which are how many units the bot is from an 
@@ -207,6 +214,13 @@ public:
 					   - used to switch states*/
 	bool GetAggressive() {return aggressive;}
 
+	/*char GetName(void)
+	Inputs: N/A
+	Outputs: char currentStateName
+	General Operation: Returns currentStateName as a char
+	*/
+	char GetName() {return currentStateName;}
+
 	/*void SetAggressive(bool aggro)
 	Inputs: bool aggro
 	Outputs: N/A
@@ -215,6 +229,13 @@ public:
 	{
 		aggressive = aggro;
 	}
+
+	/*void SetName(char n)
+	Inputs: char n
+	Outputs: N/A
+	General Operation: Used to set currentStateName
+	*/
+	void SetName(char n) {currentStateName = n;}
 
 	/*void SetVelocity(int vel)
 	Inputs: int vel
@@ -251,25 +272,53 @@ public:
 					   right when able and turns around when stuck*/
 	void WallAvoid()
 	{
-		if(magR > 0)
+		if(currentStateName == 'Ex')
 		{
-			facing += 90;
-			facing = facing % 360;
-		}
+			if(magR > 0)
+			{
+				facing += 270;
+				facing = facing % 360;
+				magF = magR;
+			}
 
-		if(magF == 0 && magR == 0)
-		{
-			if(magL > 1)
+			if(magF == 0 && magR == 0)
 			{
-				facing +=270;
-				facing = facing % 360;
-			}
-			else
-			{
-				facing += 180;
-				facing = facing % 360;
+				if(magL > 0)
+				{
+					facing += 90;
+					facing = facing % 360;
+					magF = magL;
+				}
+				else
+				{
+					facing += 180;
+					facing = facing % 360;
+					magF = magB;
+				}
 			}
 		}
+		else //special wall avoidance for Evade
+		{
+			if(magB == 0)
+			{
+				if(magR > 0)
+				{
+					facing += 270;
+					facing = facing % 360;
+					magF = magR;
+				}
+				else if(magL > 0)
+				{
+					facing += 90;
+					facing = facing % 360;
+					magF = magL;
+				}
+
+			}
+		}
+		
+		if(facing < 0)
+			facing += 360;
 	}
 
 	/*void SetFacing(int addFace)
@@ -277,9 +326,10 @@ public:
 	Outputs: N/A
 	General Operation: Used to set bot facing*/
 	//make sure it is in increments of 90
-	void SetFacing(int addFace)
+	void SetFacing(int face)
 	{
-		facing += addFace;
+		facing += face;
+		facing = facing % 360;
 	}
 	
 	/*void Spawn(int face, Vector3D loc, int vel, bool aggro)
@@ -296,6 +346,71 @@ public:
 		location = loc;
 		SetVelocity(vel);
 		aggressive = aggro;
+	}
+
+	
+	/*void UpdateLocation(void)
+	Inputs: N/A
+	Outputs: N/A
+	General Operation: Updates the location of the bot via facing,
+					   magnitudes, and velocity. Runs every update
+					   via the states.
+	*/
+	void UpdateLocation()
+	{
+		if(velocity.x != 0)
+		{
+			for(int i = abs(int(velocity.x/10)); i > 0; i--)
+			{
+				if((velocity.x < 0 && facing == 0) || (velocity.x > 0 && facing == 180))
+				{
+					if(i <= magB)
+					{
+						if(velocity.x > 0)
+							location.x += i;
+						else
+							location.x -=i;
+						break;
+					}
+				}
+				else
+				{
+					if(i <= magF)
+					{
+						if(velocity.x > 0)
+							location.x += i;
+						else
+							location.x -=i;
+						break;
+					}
+				}
+			}
+		}
+		else if(velocity.z != 0)
+		{
+			for(int i = abs(int(velocity.z/10)); i > 0; i--)
+			{
+				if((velocity.z < 0 && facing == 90) || (velocity.z > 0 && facing == 270))
+				{
+					if(i <= magB)
+					{
+						if(velocity.z > 0)
+							location.z += i;
+						else
+							location.z -=i;
+						break;
+					}
+				}
+				else if(i <= magF)
+				{
+					if(velocity.z > 0)
+						location.z += i;
+					else
+						location.z -= i;
+					break;
+				}	
+			}
+		}
 	}
 	
 	void AddWayPoint(Point3D wayPoint);
