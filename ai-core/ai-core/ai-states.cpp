@@ -61,12 +61,8 @@ AiExplore* AiExplore::Instance()
 }
 
 void AiExplore::Enter(AiManager* aimanager)
-
 {
 	// put code here
-	{
-		cout << "Woot. We did it!\n";
-	}
 #ifdef _DEBUG_
 	cout << "AiExplore::Enter()\n";
 #endif
@@ -110,7 +106,6 @@ AiEvade* AiEvade::Instance()
 }
 
 void AiEvade::Enter(AiManager* aimanager)
-
 {
 	// put code here
 #ifdef _DEBUG_
@@ -231,6 +226,7 @@ void AiFollowPath::Execute(AiManager* aimanager)
 #endif
 
 	// put code here
+	aimanager->MoveToNextWayPoint(aimanager->GetNextWayPoint());
 }
 void AiFollowPath::Exit(AiManager* aimanager)
 {

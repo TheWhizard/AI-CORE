@@ -140,9 +140,6 @@ public:
 
 	void Update(void); // Will run the current state without any new information
 
-
-	
-
 	
 	// Prototype member functions for Setting the initial state
 	// machine state
@@ -440,7 +437,43 @@ public:
 	{
 		return obstacleLocationArray[number];
 	}
-//
+//Gets the next obstacleLocation and determines what to do with it
+	Point3D GetNextObstacle()
+	{
+		int obstacleMaxSize = GetObstacleCount();
+		int currentObstacle = 0;
+		Point3D avoidLocation;
+		int obstacleDirection = 1;
+
+		currentObstacle = currentObstacle + obstacleDirection;
+		if (currentObstacle ==1)
+		{
+			if (currentObstacle < obstacleMaxSize)
+			{
+				return AiManager::GetObstacleLocation(currentObstacle);
+			}
+			else
+			{
+				obstacleDirection =-1;
+				currentObstacle = currentObstacle + obstacleDirection;
+			}
+		}
+		else
+		{
+			if (obstacleDirection == 1)
+			{
+				return AiManager::GetObstacleLocation(currentObstacle);
+			}
+			else
+			{
+				obstacleDirection =1;
+				currentObstacle = currentObstacle + obstacleDirection;
+			}
+		}
+
+		avoidLocation = GetObstacleLocation(currentObstacle);
+	}
+
 
 		int GetWayPointCount()
 	{
@@ -451,6 +484,69 @@ public:
 	{
 		return wayPointArray[number];
 	}
+
+	//Gets the next vector and determines what to do with it
+	Point3D GetNextWayPoint()
+	{
+		int wayPointMaxSize = GetWayPointCount();
+		int currentWayPoint = 0;
+		Point3D targetLocation;
+		int wayPointDirection = 1;
+
+		currentWayPoint = currentWayPoint + wayPointDirection;
+		if (currentWayPoint ==1)
+		{
+			if (currentWayPoint < wayPointMaxSize)
+			{
+				return AiManager::GetWayPointLocation(currentWayPoint);
+			}
+			else
+			{
+				wayPointDirection =-1;
+				currentWayPoint = currentWayPoint + wayPointDirection;
+			}
+		}
+		else
+		{
+			if (wayPointDirection == 1)
+			{
+				return AiManager::GetWayPointLocation(currentWayPoint);
+			}
+			else
+			{
+				wayPointDirection =1;
+				currentWayPoint = currentWayPoint + wayPointDirection;
+			}
+		}
+
+		targetLocation = GetWayPointLocation(currentWayPoint);
+
+	}
+
+	void MoveToNextWayPoint(Point3D nextPoint)
+	{
+    if(nextPoint.z == location.z)
+    {
+        if((location.x - nextPoint.x) < 0)
+            SetFacing(180);
+        else
+            SetFacing(0);
+    }
+    else
+    {
+        if((location.z - nextPoint.z) < 0)
+            SetFacing(270);
+        else
+            SetFacing(90);
+    }
+    
+    SetVelocity(10);
+    UpdateLocation();
+    
+    if(location.x == nextPoint.x && location.z == nextPoint.z)
+        GetNextWayPoint();
+	}
+
 
 	/*~AiManager(void)
 	Inputs: N/A

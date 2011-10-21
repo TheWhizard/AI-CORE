@@ -112,7 +112,7 @@ int main ()
 
 	
 	// Create a vector for Bot to Spawn
-	Vector3D botVec(1.0, 0.0, 3.0);
+	Vector3D botVec(1.0, 11.0, 31.0);
 	// Create a velocity for the Bot to be moving when it spawns
 	double botVel = 1.0;
 	// Create a direction for the bot to be facing
@@ -174,13 +174,16 @@ int main ()
 	me.z=0.0;
 	Warren.AddWayPoint(me);
 
-	Warren.SetStateFollowPath();
+	//Warren.SetStateFollowPath();
+	Warren.SetStateExplore();
 	Warren.Update(0,0,0,0,vec,false);
 	//
 	// Normally this would be some sort of almost infinite loop
 	// This runs through 20 times, and calls update
 	//
-	/*for (int i=0; i<20; ++i)
+
+	Vector3D botPos;
+	for (int i=0; i<5; ++i)
 	{
 		//
 		// The Instantiation of AiManager called Warren
@@ -192,9 +195,27 @@ int main ()
 
 		// You will have to calculate the Line of Sight 
 		// Hint: the bots location is Warren.GetLocation() and returns Vector3D
-		Warren.Update(1,2,3,4,vec,true);
+		Warren.Update(145,2,0,0,vec,false);
+		botPos = Warren.GetLocation();
+        std::cout<< botPos.x << "," << botPos.y << "," << botPos.z << endl;
+
+		Warren.Update(145,2,0,0,vec,false);
+		botPos = Warren.GetLocation();
+        std::cout<< botPos.x << "," << botPos.y << "," << botPos.z << endl;
+
+		Warren.Update(145,2,0,0,vec,false);
+		botPos = Warren.GetLocation();
+        std::cout<< botPos.x << "," << botPos.y << "," << botPos.z << endl;
+
+		Warren.Update(145,2,0,0,vec,false);
+		botPos = Warren.GetLocation();
+        std::cout<< botPos.x << "," << botPos.y << "," << botPos.z << endl;
+
+		Warren.Update(145,2,0,0,vec,false);
+		botPos = Warren.GetLocation();
+        std::cout<< botPos.x << "," << botPos.y << "," << botPos.z << endl;
 
 	}
-	*/
+	
 	return 0;
 }

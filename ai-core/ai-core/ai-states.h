@@ -45,8 +45,6 @@ public:
 	virtual void Exit(AiManager* aimanager);
 };
 
-
-
 // Name of AiFollowPath Class
 class AiFollowPath : public State<AiManager>
 {
